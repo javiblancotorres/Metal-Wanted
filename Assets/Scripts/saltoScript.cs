@@ -13,8 +13,9 @@ public class saltoScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if( (Input.GetKeyDown("up"))
+		if(Input.GetKeyDown("up")){
 			rigidbody2D.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+		}
 	}
 	}
 
