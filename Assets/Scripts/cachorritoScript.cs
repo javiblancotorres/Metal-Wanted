@@ -10,6 +10,9 @@ public class cachorritoScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		}
+		void OnCollisionEnter2D(Collision2D Player){
+			Destroy (gameObject);
+
 	}
 }

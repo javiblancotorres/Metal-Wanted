@@ -17,6 +17,7 @@ public class saltoScript : MonoBehaviour {
 	
 
 	
+
 		if( (Input.GetKeyDown("up") || Input.GetKeyDown("space")) && tocasuelo) {
 			rigidbody2D.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
 
