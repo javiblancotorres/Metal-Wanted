@@ -4,12 +4,14 @@ using System.Collections;
 public class saludScript : MonoBehaviour {
 
 	public int salud = 100;
+	public bool vida;
 
 	private int maxsalud;
 
 	// Use this for initialization
 	void Start () {
 		maxsalud = salud;
+		vida = true; 
 
 	}
 	
@@ -18,6 +20,17 @@ public class saludScript : MonoBehaviour {
 		if (salud > maxsalud) {
 			salud = maxsalud ;
 		}
+		if (salud >= 1) {
+			vida = true;	
+		}
+		if (salud <= 0) {
+			vida = false;		
+		}
+		if (vida = false) {
+			Destroy(gameObject);	
+		
+		}
+
 	}
 	void OnCollisionEnter2D (Collision2D target){
 
