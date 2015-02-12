@@ -5,10 +5,12 @@ public class movimientoScript : MonoBehaviour {
 
 	public float speed = 10f;
 	public Vector2 maxVelocity = new Vector2(2,3);
-
+	float derecha;
+	float izquierda;
 	// Use this for initialization
 	void Start () {
-	
+		derecha = transform.localScale.x;
+		izquierda = derecha * -1;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +29,7 @@ public class movimientoScript : MonoBehaviour {
 			if (absVelX < maxVelocity.x)
 				forceX = speed;
 			//esto de abajo pone al script mirando a la derecha
-			this.transform.localScale = new Vector3(1, 1, 1);
+			this.transform.localScale = new Vector3(derecha, transform.localScale.y, transform.localScale.z);
 		}
 		else if (Input.GetKey ("left"))
 		{
@@ -40,7 +42,7 @@ public class movimientoScript : MonoBehaviour {
 				forceX = -speed;
 			
 			//esto de abajo pone al script mirando a la izquierda.
-			this.transform.localScale = new Vector3 (-1, 1, 1);
+			this.transform.localScale = new Vector3 (izquierda,transform.localScale.y, transform.localScale.z);
 		}
 		rigidbody2D.AddForce (new Vector2 (forceX, forceY));
 	
