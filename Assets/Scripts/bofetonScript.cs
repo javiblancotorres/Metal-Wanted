@@ -5,6 +5,7 @@ public class bofetonScript : MonoBehaviour {
 
 	public bool bofeton;
 
+
 	private Animator animacion; 
 
 
@@ -14,15 +15,18 @@ public class bofetonScript : MonoBehaviour {
 		animacion = GetComponent<Animator> ();
 
 		bofeton = false; 
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 		if (Input.GetKey ("z")) {
-			animacion.SetBool ("bofeton", true);		
+			animacion.SetBool ("bofeton", true); 	
 		}else{
 			animacion.SetBool ("bofeton", false);
+
+	
 
 	}
 }
