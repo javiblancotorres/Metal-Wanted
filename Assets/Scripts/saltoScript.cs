@@ -25,14 +25,14 @@ public class saltoScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D target){
-		Debug.Log ("tocando suelo");
+
 		if (target.transform.tag == "suelo"){
 			tocasuelo = true;
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D target){
-		Debug.Log ("tocando suelo");
+
 		if (target.transform.tag == "suelo"){
 			tocasuelo = false;
 		}

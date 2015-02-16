@@ -20,10 +20,10 @@ public class saludScript : MonoBehaviour {
 		if (salud > maxsalud) {
 			salud = maxsalud ;
 		}
-		if (salud >= 1) {
+		if (salud > 1) {
 			vida = true;	
 		}
-		if (salud <= 0) {
+		if (salud < 1) {
 			vida = false;		
 		}
 		if (vida = false) {
@@ -38,7 +38,11 @@ public class saludScript : MonoBehaviour {
 			salud = salud + 5;	
 
 
-		} 
+		}
+
+		if (target.transform.tag == "bacala") {
+						salud = salud - 30;
+				}
 	}
 
 }
