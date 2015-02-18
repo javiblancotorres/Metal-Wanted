@@ -3,12 +3,16 @@ using System.Collections;
 
 public class cervezaScript : MonoBehaviour {
 
-	public GameObject Beber1;
+	public bool super;
+	public bool bebiendo;
+	public float tiempo = 2f;
 
+	private Animator beber; 
 
 	// Use this for initialization
 	void Start () {
-	
+
+		beber = GetComponent <Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -19,9 +23,15 @@ public class cervezaScript : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D target){
 
-		if (target.transform.tag == "salud") {
-			var clone = Instantiate(Beber1, transform.position, Quaternion.identity);
-			Destroy (gameObject);
+		if (target.transform.tag == "cerveza") {
+						beber.SetBool ("bebiendo", true);
+			beber.SetBool ("super",false);
+
 			}
+			    		
+		}
+
 	}
-}
+
+
+		

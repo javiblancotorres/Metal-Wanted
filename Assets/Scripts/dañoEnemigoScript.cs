@@ -26,7 +26,10 @@ public class dañoEnemigoScript : MonoBehaviour {
         if (target.transform.tag == "SuperPlayer")
 						salud = salud - 100;
 		if (salud < 1) {
-			vida = false;
+						vida = false;
+				}else{
+			vida = true;
+
 		}
 
 		if (vida = false) {
