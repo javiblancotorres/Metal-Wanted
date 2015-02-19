@@ -31,7 +31,7 @@ public class bakalaScript : MonoBehaviour {
 	}
 
 	void mediavuelta(){
-				this.transform.localScale = new Vector3 (this.transform.localScale.x * -1, this.transform.localScale.y, this.transform.localScale.z);
+				this.transform.localScale = new Vector3 (this.transform.localScale.x , this.transform.localScale.y, this.transform.localScale.z);
 		}
 
 	void gira_si_no_avanza(){

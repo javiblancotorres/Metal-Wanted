@@ -43,7 +43,7 @@ public class movimientoScript : MonoBehaviour {
 		animacion = GetComponent<Animator> ();
 
 
-		//beber = GetComponent <Animator> ();
+
 	}
 	
 	// Update is called once per frame
@@ -55,7 +55,7 @@ public class movimientoScript : MonoBehaviour {
 				var forceY = 0f;
 
 
-				if (Input.GetKey ("right")) {
+				if (Input.GetKey ("right"))  {
 			
 						//esto lo que hace es frenar cuando voy a izquierda y pulso derecha
 						if (rigidbody2D.velocity.x < 0) {
@@ -101,6 +101,7 @@ public class movimientoScript : MonoBehaviour {
 						animacion.SetBool ("bofeton", false);
 
 				}
+	
 		//Para el SuperMetalero
 		if ( (Time.time > supertime) && bebiendo) {
 			animacion.SetBool ("bebiendo", false);
