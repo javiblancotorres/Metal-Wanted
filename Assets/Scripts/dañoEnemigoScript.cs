@@ -27,8 +27,6 @@ public class dañoEnemigoScript : MonoBehaviour {
 						salud = salud - 100;
 		if (salud < 1) {
 						vida = false;
-				}else{
-			vida = true;
 
 		}
 
