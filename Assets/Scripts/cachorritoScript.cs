@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class cachorritoScript : MonoBehaviour {
+	
+
 
 	// Use this for initialization
 	void Start () {
@@ -11,8 +13,12 @@ public class cachorritoScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		}
-		void OnCollisionEnter2D(Collision2D Player){
-			Destroy (gameObject);
 
+
+		void OnCollisionEnter2D(Collision2D player){
+			if (player.transform.tag == "Player") {
+				Destroy (gameObject);
+			}
+			
+		}
 	}
-}

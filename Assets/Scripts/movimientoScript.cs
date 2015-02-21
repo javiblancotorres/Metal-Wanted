@@ -11,7 +11,12 @@ public class movimientoScript : MonoBehaviour {
 	public bool saltar;
 
 	public bool bofeton;
- 
+
+	public int numChachorritos = 0;
+	private int maxCachorritos = 5;
+
+	public bool lanzarcachorritos;
+	 
 	public bool super;
 	public bool bebiendo;
 	public float tiempobebiendo = 2f;
@@ -39,6 +44,8 @@ public class movimientoScript : MonoBehaviour {
 		vida = true; 
 
 		bofeton = false;
+
+
 
 		animacion = GetComponent<Animator> ();
 
@@ -117,6 +124,11 @@ public class movimientoScript : MonoBehaviour {
 
 				}
 
+		//Para lanzar cachorritos
+		if (Input.GetKey ("x")) {
+				
+		}
+
 		}
 
 		void OnCollisionEnter2D(Collision2D target){
@@ -144,8 +156,14 @@ public class movimientoScript : MonoBehaviour {
 		if (target.transform.tag == "bacala") {
 			salud = salud - 30;
 		}
-			
+
+	//Para cachorritos.
+
+		if (target.transform.tag == "cachorrito") {
+			numChachorritos = numChachorritos + 1	;
 		}
+	}
+
 
 
 	void OnCollisionExit2D(Collision2D target){

@@ -10,14 +10,28 @@ public class bakalaScript : MonoBehaviour {
 	private bool veoplayer = false;
 	private Vector2  direction;
 
+	public int salud = 100;
+	public bool vida;
+	private int maxsalud;
+	public bool muerte;
+
 	private float vAbs;
 	private float velocidad;
 	public float tiempo_espera = 0;
+
+	private Animator animacion;
 
 
 	// Use this for initialization
 	void Start () {
 		velocidad = speed;
+
+		maxsalud = salud;
+		vida = true; 
+
+
+
+		animacion = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -71,6 +85,29 @@ public class bakalaScript : MonoBehaviour {
 
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D target){
+		if (target.transform.tag == "Player") {
+						salud = salud - 50;
+				}
+		if (target.transform.tag == "SuperPlayer") {
+						salud = salud - 100;
+				}
+		if (salud < 1) {
+			vida = false;
+
+			
+		}
+		
+		if (vida = false) {
+						animacion.SetBool ("muerte", true);
+				} else {
+			animacion.SetBool ("muerte", false);
+		
+		}
+		
+	}
+
 }
 
 
