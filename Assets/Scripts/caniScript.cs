@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bakalaScript : MonoBehaviour {
+public class caniScript : MonoBehaviour {
 
 	public float speed = 0.4f;
 	public Transform checkMuros, checkSuelos;
@@ -9,31 +9,31 @@ public class bakalaScript : MonoBehaviour {
 	private bool veosuelo = true;
 	private bool veoplayer = false;
 	private Vector2  direction;
-
+	
 	public int salud = 100;
 	public bool vida;
 	private int maxsalud;
 	public bool muerte;
-
+	
 	public bool estacerca = false;
 	public bool ataque;
-
+	
 	private float vAbs;
 	private float velocidad;
 	public float tiempo_espera = 0;
-
+	
 	private Animator animacion;
-
-
+	
+	
 	// Use this for initialization
 	void Start () {
 		velocidad = speed;
-
+		
 		maxsalud = salud;
 		vida = true; 
-
-
-
+		
+		
+		
 		animacion = GetComponent<Animator> ();
 	}
 	
@@ -44,20 +44,20 @@ public class bakalaScript : MonoBehaviour {
 		gira_si_no_hay_suelo();
 		busca_player();
 		rigidbody2D.velocity = new Vector2(this.transform.localScale.x * velocidad, rigidbody2D.velocity.y);
-
-		if (estacerca) {
-						animacion.SetBool ("ataque", true);
-				}else{
-			animacion.SetBool("ataque", false);
-
 		
+		if (estacerca) {
+			animacion.SetBool ("ataque", true);
+		}else{
+			animacion.SetBool("ataque", false);
+			
+			
 		}
 	}
-
+	
 	void mediavuelta(){
-				this.transform.localScale = new Vector3 (this.transform.localScale.x , this.transform.localScale.y, this.transform.localScale.z);
-		}
-
+		this.transform.localScale = new Vector3 (this.transform.localScale.x , this.transform.localScale.y, this.transform.localScale.z);
+	}
+	
 	void gira_si_no_avanza(){
 		vAbs =  Mathf.Abs (rigidbody2D.velocity.x);
 		if(vAbs < 0.1f && !veoplayer){
@@ -68,22 +68,22 @@ public class bakalaScript : MonoBehaviour {
 				mediavuelta();
 			}
 		}
-}
-
+	}
+	
 	void gira_si_veo_muro(){
 		veomuro = Physics2D.Linecast (transform.position, checkMuros.position, 1 << LayerMask.NameToLayer ("suelo"));
 		Debug.DrawLine (transform.position, checkMuros.position,Color.green);
 		if (veomuro)
 			mediavuelta();
 	}
-
+	
 	void gira_si_no_hay_suelo(){
 		veosuelo = Physics2D.Linecast (transform.position, checkSuelos.position, 1 << LayerMask.NameToLayer ("suelo"));
 		Debug.DrawLine (transform.position, checkSuelos.position,Color.red);
 		if (!veosuelo)
 			mediavuelta();
 	}
- 
+	
 	void busca_player(){
 		direction  = checkMuros.position-transform.position;
 		var ray = new Ray2D(transform.position,direction.normalized);
@@ -96,26 +96,26 @@ public class bakalaScript : MonoBehaviour {
 						animacion.SetBool ("ataque", false); 
 
 				}*/
-		}
-
-
-
-
-
+	}
+	
+	
+	
+	
+	
 	void OnCollisionEnter2D(Collision2D target){
 		if (target.transform.tag == "Player") {
-						salud = salud - 50;
-				}
-
+			salud = salud - 50;
+		}
+		
 		if (salud < 1) {
 			vida = false;
-
+			
 			
 		}
 		
 		if (vida = false) {
 			Destroy(gameObject);
-		
+			
 		}
 		
 	}
@@ -126,7 +126,7 @@ public class bakalaScript : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D Player){
 		estacerca = false;
 	}
-
+	
 }
 
 
