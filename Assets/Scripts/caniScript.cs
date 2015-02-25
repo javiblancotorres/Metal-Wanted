@@ -113,7 +113,7 @@ public class caniScript : MonoBehaviour {
 			
 		}
 		
-		if (vida = false) {
+		if (vida == false) {
 			Destroy(gameObject);
 			
 		}

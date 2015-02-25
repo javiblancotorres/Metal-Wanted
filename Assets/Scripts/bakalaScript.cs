@@ -3,8 +3,10 @@ using System.Collections;
 
 public class bakalaScript : MonoBehaviour {
 
+	public GameObject navaja;
+
 	public float speed = 0.4f;
-	public Transform checkMuros, checkSuelos;
+	public Transform checkMuros, checkSuelos, puntoDisparo;
 	private bool veomuro = false;
 	private bool veosuelo = true;
 	private bool veoplayer = false;
@@ -17,6 +19,8 @@ public class bakalaScript : MonoBehaviour {
 
 	public bool estacerca = false;
 	public bool ataque;
+
+	public static bool Ataque; 
 
 	private float vAbs;
 	private float velocidad;
@@ -45,14 +49,13 @@ public class bakalaScript : MonoBehaviour {
 		busca_player();
 		rigidbody2D.velocity = new Vector2(this.transform.localScale.x * velocidad, rigidbody2D.velocity.y);
 
-		if (estacerca) {
-						animacion.SetBool ("ataque", true);
-				}else{
-			animacion.SetBool("ataque", false);
+		if (ataque == true) {
+			var clone = Instantiate (navaja, puntoDisparo.position, Quaternion.identity) as GameObject;
 
-		
 		}
+			
 	}
+
 
 	void mediavuelta(){
 				this.transform.localScale = new Vector3 (this.transform.localScale.x , this.transform.localScale.y, this.transform.localScale.z);
@@ -102,29 +105,32 @@ public class bakalaScript : MonoBehaviour {
 
 
 
-	void OnCollisionEnter2D(Collision2D target){
-		if (target.transform.tag == "Player") {
+	void OnCollisionEnter2D(Collision2D Player){
+		if (movimientoScript.bofeton == true) {
 						salud = salud - 50;
 				}
 
-		if (salud < 1) {
+		if (salud <= 0) {
 			vida = false;
 
 			
 		}
 		
-		if (vida = false) {
+		if (vida == false) {
 			Destroy(gameObject);
 		
 		}
 		
 	}
 	void OnTriggerEnter2D(Collider2D Player){
-		estacerca = true;
+		animacion.SetBool ("ataque", true) ;
+		ataque = true;
+
 	}
 	
 	void OnTriggerExit2D(Collider2D Player){
-		estacerca = false;
+		ataque = false;
+		animacion.SetBool ("ataque", false);
 	}
 
 }

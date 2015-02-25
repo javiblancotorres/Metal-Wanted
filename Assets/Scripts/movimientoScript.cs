@@ -6,11 +6,13 @@ public class movimientoScript : MonoBehaviour {
 	public float speed = 10f;
 	public float jumpSpeed = 5f;
 
+
+
 	public Vector2 maxVelocity = new Vector2(2,3);
 	public bool tocasuelo = false;
 	public bool saltar;
 
-	public bool bofeton;
+	public static bool bofeton;
 
 	public int numChachorritos = 0;
 	private int maxCachorritos = 5;
@@ -103,11 +105,13 @@ public class movimientoScript : MonoBehaviour {
 				//Para pegar bofeton
 
 				if (Input.GetKey ("z")) {
-						animacion.SetBool ("bofeton", true); 	
-				} else {
-						animacion.SetBool ("bofeton", false);
-
-				}
+						animacion.SetBool ("bofeton", true); 
+						bofeton = true;
+				} 
+			//Para no bofeton
+			if (bofeton == false) {
+				animacion.SetBool ("bofeton", false);
+					}
 	
 		//Para el SuperMetalero
 		if ( (Time.time > supertime) && bebiendo) {
@@ -153,11 +157,11 @@ public class movimientoScript : MonoBehaviour {
 			salud = salud + 20;	
 			}
 		
-		if (target.transform.tag == "bacala") {
+		if (target.transform.tag == "bacala" && !bofeton){
 			salud = salud - 30;
 		}
 
-	//Para cachorritos.
+		//Para cachorritos.
 
 		if (target.transform.tag == "cachorrito") {
 			numChachorritos = numChachorritos + 1	;
@@ -175,6 +179,10 @@ public class movimientoScript : MonoBehaviour {
 
 
 	} 
+
+	public void finbofeton(){
+		bofeton = false;
+	}
 
 
 }
