@@ -44,14 +44,11 @@ public class caniScript : MonoBehaviour {
 		gira_si_no_hay_suelo();
 		busca_player();
 		rigidbody2D.velocity = new Vector2(this.transform.localScale.x * velocidad, rigidbody2D.velocity.y);
-		
-		if (estacerca) {
-			animacion.SetBool ("ataque", true);
-		}else{
-			animacion.SetBool("ataque", false);
-			
-			
+
+		if (ataque == true) {
+			animacion.SetBool ("ataque", true);	
 		}
+	
 	}
 	
 	void mediavuelta(){
@@ -101,13 +98,12 @@ public class caniScript : MonoBehaviour {
 	
 	
 	
-	
-	void OnCollisionEnter2D(Collision2D target){
-		if (target.transform.tag == "Player") {
+	void OnCollisionEnter2D(Collision2D Player){
+		if (movimientoScript.bofeton == true) {
 			salud = salud - 50;
 		}
 		
-		if (salud < 1) {
+		if (salud <= 0) {
 			vida = false;
 			
 			
@@ -120,11 +116,14 @@ public class caniScript : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter2D(Collider2D Player){
-		estacerca = true;
+
+		ataque = true;
+		
 	}
 	
 	void OnTriggerExit2D(Collider2D Player){
-		estacerca = false;
+		ataque = false;
+		animacion.SetBool ("ataque", false);
 	}
 	
 }

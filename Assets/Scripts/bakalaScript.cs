@@ -50,7 +50,9 @@ public class bakalaScript : MonoBehaviour {
 		rigidbody2D.velocity = new Vector2(this.transform.localScale.x * velocidad, rigidbody2D.velocity.y);
 
 		if (ataque == true) {
+			animacion.SetBool ("ataque", true);
 			var clone = Instantiate (navaja, puntoDisparo.position, Quaternion.identity) as GameObject;
+			ataque = false;
 
 		}
 			
@@ -122,17 +124,20 @@ public class bakalaScript : MonoBehaviour {
 		}
 		
 	}
-	void OnTriggerEnter2D(Collider2D Player){
-		animacion.SetBool ("ataque", true) ;
-		ataque = true;
-
+ void OnTriggerEnter2D(Collider2D target){
+		if (target.transform.tag == "Player") {
+						
+						ataque = true;
+				}
 	}
 	
-	void OnTriggerExit2D(Collider2D Player){
+	void OnTriggerExit2D(Collider2D target){
+		if (target.transform.tag == "Player"){
 		ataque = false;
 		animacion.SetBool ("ataque", false);
-	}
+		}
 
+	}
 }
 
 
