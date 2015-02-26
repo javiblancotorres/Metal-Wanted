@@ -94,13 +94,7 @@ public class bakalaScript : MonoBehaviour {
 		var ray = new Ray2D(transform.position,direction.normalized);
 		//Debug.DrawRay(ray.origin, ray.direction*2);
 		var hit = Physics2D.Raycast(ray.origin, ray.direction,2, 1 << LayerMask.NameToLayer ("Player"));
-		/*if (hit.collider != null && hit.transform.tag == "Player") {
 
-						animacion.SetBool ("ataque", true);
-				} else {
-						animacion.SetBool ("ataque", false); 
-
-				}*/
 		}
 
 

@@ -28,6 +28,9 @@ public class movimientoScript : MonoBehaviour {
 	public int salud = 100;
 	public bool vida;
 	private int maxsalud;
+	public RectTransform livebar;
+
+	private float rectLive;
 
 	//private Animator beber; 
 	float derecha;
@@ -42,10 +45,14 @@ public class movimientoScript : MonoBehaviour {
 		izquierda = -1;
 
 		//Salud
+
+
 		maxsalud = salud;
 		vida = true; 
 
 		bofeton = false;
+
+	
 
 
 
@@ -129,8 +136,9 @@ public class movimientoScript : MonoBehaviour {
 				}
 
 		//Para lanzar cachorritos
-		if (Input.GetKey ("x")) {
-				
+		if ((Input.GetKey ("x")) && numChachorritos > 0) {
+			animacion.SetBool ("lanzarcachorritos", true);
+			numChachorritos = numChachorritos -1;
 		}
 
 		}
@@ -163,7 +171,7 @@ public class movimientoScript : MonoBehaviour {
 
 		//Para cachorritos.
 
-		if (target.transform.tag == "cachorrito") {
+		if ((target.transform.tag == "cachorrito") && maxCachorritos < 5) {
 			numChachorritos = numChachorritos + 1	;
 		}
 	}
