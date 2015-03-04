@@ -28,25 +28,4 @@ public class saltoScript : MonoBehaviour {
 
 		}
 	}
-
-/*	void OnCollisionEnter2D(Collision2D target){
-
-		if (target.transform.tag == "suelo"){
-			tocasuelo = true;
-			salto.SetBool ("saltar", false);
-		}
-
-
-	}*/
-
-	/*void OnCollisionExit2D(Collision2D target){
-
-		if (target.transform.tag == "suelo"){
-			tocasuelo = false;
-			salto.SetBool ("saltar", true);
-		}
-*/
-
-
-	//}
 }

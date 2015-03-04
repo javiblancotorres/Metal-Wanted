@@ -106,6 +106,11 @@ public class bakalaScript : MonoBehaviour {
 						salud = salud - 50;
 				}
 
+		if (movimientoScript.super == true) {
+			salud = salud - 100;
+		}
+
+
 		if (salud <= 0) {
 			vida = false;
 

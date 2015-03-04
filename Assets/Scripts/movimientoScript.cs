@@ -11,6 +11,7 @@ public class movimientoScript : MonoBehaviour {
 	public Vector2 maxVelocity = new Vector2(2,3);
 	public bool tocasuelo = false;
 	public bool saltar;
+	public float salto = 0.7f;
 
 	public static bool bofeton;
 
@@ -19,7 +20,7 @@ public class movimientoScript : MonoBehaviour {
 
 	public bool lanzarcachorritos;
 	 
-	public bool super;
+	public static bool super;
 	public bool bebiendo;
 	public float tiempobebiendo = 2f;
 	public float tiemposuper = 5f;
@@ -52,7 +53,7 @@ public class movimientoScript : MonoBehaviour {
 
 		bofeton = false;
 
-	
+
 
 
 
@@ -106,8 +107,9 @@ public class movimientoScript : MonoBehaviour {
 				//Para el salto
 
 				if ((Input.GetKeyDown ("up") || Input.GetKeyDown ("space")) && tocasuelo) {
+						transform.localScale = new Vector2(transform.localScale.x*0.7f  ,transform.localScale.y*0.7f); 
 						rigidbody2D.AddForce (new Vector2 (0, jumpSpeed), ForceMode2D.Impulse);
-				}
+							}
 
 				//Para pegar bofeton
 
@@ -135,11 +137,11 @@ public class movimientoScript : MonoBehaviour {
 
 				}
 
-		//Para lanzar cachorritos
+		/*Para lanzar cachorritos
 		if ((Input.GetKey ("x")) && numChachorritos > 0) {
 			animacion.SetBool ("lanzarcachorritos", true);
 			numChachorritos = numChachorritos -1;
-		}
+		}*/
 
 		}
 
@@ -156,7 +158,7 @@ public class movimientoScript : MonoBehaviour {
 				animacion.SetBool ("bebiendo", true);
 				animacion.SetBool ("super",false);
 				supertime = Time.time + tiempobebiendo;
-				
+			Destroy (target.gameObject);
 			}
 			
 		//Para salud.
@@ -169,6 +171,13 @@ public class movimientoScript : MonoBehaviour {
 			salud = salud - 30;
 		}
 
+		if (salud <= 0) {
+			vida = false;
+					}
+
+		if (vida == false) {
+			Destroy(gameObject);
+		}
 		//Para cachorritos.
 
 		if ((target.transform.tag == "cachorrito") && maxCachorritos < 5) {
